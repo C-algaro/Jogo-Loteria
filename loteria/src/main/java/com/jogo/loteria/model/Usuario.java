@@ -8,9 +8,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 @Entity
-@Table(name = "tb_usuariosLoteria")
+@Table(name = "tb_usuario")
 public class Usuario {
 
     @Id
@@ -18,12 +21,15 @@ public class Usuario {
     private UUID id;
 
     @Column(name = "nome")
+    @NotEmpty @Size(min = 4, max = 20)
     private String nome;
 
     @Column(name = "email")
+    @NotEmpty @Email
     private String email;
 
     @Column(name = "senha")
+    @NotEmpty @Size(min = 6, max = 20)
     private String senha;
 
 //-----------------------------------------------------------------------------
