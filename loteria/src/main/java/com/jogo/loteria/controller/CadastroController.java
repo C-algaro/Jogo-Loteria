@@ -2,6 +2,7 @@ package com.jogo.loteria.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.servlet.View;
 
 import com.jogo.loteria.Repository.UsuarioRepository;
 import com.jogo.loteria.model.Usuario;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
@@ -29,7 +31,9 @@ public class CadastroController {
     }      
             
     @PostMapping("/salvarUsuario")
-    public ModelAndView salvarUsuario(@Valid Usuario usuario, HttpServletRequest request) {
+    public ModelAndView salvarUsuario(@Valid Usuario usuario, BindingResult bindingResult, HttpServletRequest request) {
+        if(bindingResult.hasErrors())
+            return new ModelAndView("redirect:/cadastro");
         usuarioRepository.save(usuario);
         request.setAttribute(View.RESPONSE_STATUS_ATTRIBUTE, HttpStatus.FOUND);
         return new ModelAndView("redirect:/home");

@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Size;
 public class Usuario extends Model {
 
     @Column(name = "nome")
-    @NotEmpty @Size(min = 4, max = 20)
+    @NotEmpty @Size(min = 3, max = 15)
     private String nome;
 
     @Column(name = "email")
