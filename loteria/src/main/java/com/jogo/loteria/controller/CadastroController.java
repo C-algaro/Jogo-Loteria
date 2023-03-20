@@ -9,19 +9,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.View;
 
+import com.jogo.loteria.Repository.UsuarioRepository;
 import com.jogo.loteria.model.Usuario;
-import com.jogo.loteria.repository.UsuarioRepository;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/cadastro")
 public class CadastroController {
-
+    
     @Autowired
     UsuarioRepository usuarioRepository;
-    
+
     @GetMapping()
     public ModelAndView cadastro() {
         ModelAndView modelAndView = new ModelAndView();

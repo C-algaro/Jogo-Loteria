@@ -1,7 +1,6 @@
-package com.jogo.loteria.repository;
+package com.jogo.loteria.Repository;
 
 import java.util.UUID;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

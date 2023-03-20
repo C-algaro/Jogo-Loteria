@@ -1,12 +1,7 @@
 package com.jogo.loteria.model;
 
-import java.util.UUID;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -14,11 +9,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+public class Usuario extends Model {
 
     @Column(name = "nome")
     @NotEmpty @Size(min = 4, max = 20)
@@ -45,10 +36,6 @@ public class Usuario {
     }
 
 //-----------------------------------------------------------------------------
-
-    public UUID getId() {
-        return id;
-    }
 
     public String getNome() {
         return nome;
